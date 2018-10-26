@@ -7,12 +7,14 @@
 // require('admin-lte');
 
 window.Vue = require('vue');
+
 import VueRouter from 'vue-router'
 Vue.use(VueRouter)
 
 let routes = [
     { path: '/dashboard', component: require('./components/Dashboard.vue') },
-    { path: '/profile', component: require('./components/Profile.vue') }
+    { path: '/profile', component: require('./components/Profile.vue') },
+    { path: '/users', component: require('./components/Users.vue') }
 ]
 
 // 3. Create the router instance and pass the `routes` option

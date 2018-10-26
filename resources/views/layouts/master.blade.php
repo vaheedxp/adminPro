@@ -48,6 +48,17 @@
             {{-- Right navbar links --}}
             <ul class="navbar-nav ml-auto">
 
+                <li class="nav-item">
+                    <a href="{{url('www/github/taqivaheed')}}" class="nav-link">
+                    <i class="fab fa-github c-indigo fa-lg"></i>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="www/twitter.com/taqi.vaheed" class="nav-link">
+                    <i class="fab fa-twitter c-blue fa-lg"></i>
+                    </a>
+                </li>
+
                 {{-- Messages Dropdown Menu --}}
                 <li class="nav-item dropdown">
                     <a class="nav-link" data-toggle="dropdown" href="#">
@@ -109,7 +120,7 @@
             </a>
 
             {{-- Sidebar --}}
-            <div class="sidebar">
+            <div class="sidebar" style="padding: 0px">
                 {{-- Sidebar user panel (optional) --}}
                 <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                     <div class="image">
@@ -127,44 +138,42 @@
                         library --}}
                         <li class="nav-item">
                             <router-link to="/dashboard" class="nav-link">
-                                <i class="nav-icon fa fa-tachometer-alt"></i>
+                                <i class="nav-icon fa fa-tachometer-alt c-blue"></i>
                                 <p> Dashboard <span class="right badge badge-info badge-pill">5</span> </p>
                             </router-link>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ asset('/students') }}" class="nav-link">
-                                <i class="nav-icon fa fa-users"></i>
-                                <p> Student <span class="right badge badge-info badge-pill">5</span> </p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
                             <router-link to="/profile" class="nav-link">
-                                <i class="nav-icon fa fa-user"></i>
+                                <i class="nav-icon fa fa-user c-green"></i>
                                 <p> Profile <span class="right badge badge-info badge-pill">5</span> </p>
                             </router-link>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ asset('/students') }}" class="nav-link">
-                                <i class="nav-icon fa fa-power-off"></i>
-                                <p> Logout </p>
+                            <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                <i class="nav-icon fa fa-power-off c-red"></i>
+                                <p>{{ __('Logout') }}</p>
                             </a>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                @csrf
+                            </form>
                         </li>
                         <li class="nav-item has-treeview">
                             <a href="#" class="nav-link">
-                                <i class="nav-icon fas fa-cog"></i>
+                                <i class="nav-icon fas fa-cog c-teal"></i>
                                 <p> Management <i class="right fa fa-angle-left"></i> </p>
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link">
-                                        <i class="fa fa-circle-o nav-icon"></i>
-                                        <p>Active Page</p>
-                                    </a>
-                                </li>
+                                        <router-link to="/users" class="nav-link">
+                                            <i class="nav-icon fa fa-users c-orange"></i>
+                                            <p> Users Management <span class="right badge badge-info badge-pill">5</span> </p>
+                                        </router-link>
+                                    </li>
                                 <li class="nav-item">
                                     <a href="#" class="nav-link">
-                                        <i class="fa fa-circle-o nav-icon"></i>
-                                        <p>Inactive Page</p>
+                                        <i class="fa fa-circle nav-icon"></i>
+                                        <p>Temporary Page</p>
                                     </a>
                                 </li>
                             </ul>
