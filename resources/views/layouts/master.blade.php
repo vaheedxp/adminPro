@@ -241,6 +241,7 @@
     <script src="{{ asset('js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('js/fontawesome.min.js') }}"></script>
     <script src="{{ asset('js/adminlte.min.js') }}"></script>
+    <script src="{{ asset('js/customjs.js') }}"></script>
 </body>
 </body>
 
