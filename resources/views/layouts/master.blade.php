@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-
+    
     <title>AdminPro | Management System</title>
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>{{ config('app.name', 'Laravel') }}</title>
@@ -13,11 +13,12 @@
     {{-- <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}"> --}}
     <link rel="stylesheet" href="{{asset('css/fontawesome.min.css')}}">
     <link rel="stylesheet" href="{{asset('css/adminlte.min.css')}}">
+    <link rel="stylesheet" href="{{asset('css/toastr.min.css')}}">
 </head>
 
 <body class="hold-transition sidebar-mini">
     <div class="wrapper" id="app">
-
+        
         {{-- Navbar --}}
         <nav class="main-header navbar navbar-expand bg-white navbar-light border-bottom" style="padding: 0px;">
             <!-- Left navbar links -->
@@ -32,7 +33,7 @@
                     <a href="{{asset('students')}}" class="nav-link">Students</a>
                 </li>
             </ul>
-
+            
             {{-- SEARCH FORM --}}
             <form class="form-inline ml-3">
                 <div class="input-group input-group-sm">
@@ -44,21 +45,21 @@
                     </div>
                 </div>
             </form>
-
+            
             {{-- Right navbar links --}}
             <ul class="navbar-nav ml-auto">
-
+                
                 <li class="nav-item">
                     <a href="{{url('www/github/taqivaheed')}}" class="nav-link">
-                    <i class="fab fa-github c-indigo fa-lg"></i>
+                        <i class="fab fa-github c-indigo fa-lg"></i>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="www/twitter.com/taqi.vaheed" class="nav-link">
-                    <i class="fab fa-twitter c-blue fa-lg"></i>
+                        <i class="fab fa-twitter c-blue fa-lg"></i>
                     </a>
                 </li>
-
+                
                 {{-- Messages Dropdown Menu --}}
                 <li class="nav-item dropdown">
                     <a class="nav-link" data-toggle="dropdown" href="#">
@@ -85,7 +86,7 @@
                         <a href="#" class="dropdown-item dropdown-footer">See All Messages</a>
                     </div>
                 </li> {{-- Messages Dropdown Menu --}}
-
+                
                 {{-- Notifications Dropdown Menu --}}
                 <li class="nav-item dropdown">
                     <a class="nav-link" data-toggle="dropdown" href="#">
@@ -109,16 +110,16 @@
             </ul>
         </nav>
         {{-- Navbar End --}}
-
+        
         {{-- Main Sidebar Container --}}
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             {{-- Brand Logo --}}
             <a href="{{asset('/home')}}" class="brand-link">
                 <img src="{{asset('img/AdminLTELogo.png')}}" alt="AdminPro Logo" class="brand-image img-circle elevation-3"
-                    style="opacity: .8">
+                style="opacity: .8">
                 <span class="brand-text font-weight-light">AdminPro</span>
             </a>
-
+            
             {{-- Sidebar --}}
             <div class="sidebar" style="padding: 0px">
                 {{-- Sidebar user panel (optional) --}}
@@ -130,27 +131,27 @@
                         <a href="#" class="d-block">{{Auth::user()->name}}</a>
                     </div>
                 </div>
-
+                
                 {{-- Sidebar Menu --}}
                 <nav class="mt-2">
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                         {{-- Add icons to the links using the .nav-icon class with font-awesome or any other icon font
-                        library --}}
-                        <li class="nav-item">
-                            <router-link to="/dashboard" class="nav-link">
-                                <i class="nav-icon fa fa-tachometer-alt c-blue"></i>
-                                <p> Dashboard <span class="right badge badge-info badge-pill">5</span> </p>
-                            </router-link>
-                        </li>
-                        <li class="nav-item">
-                            <router-link to="/profile" class="nav-link">
-                                <i class="nav-icon fa fa-user c-green"></i>
-                                <p> Profile <span class="right badge badge-info badge-pill">5</span> </p>
-                            </router-link>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
+                            library --}}
+                            <li class="nav-item">
+                                <router-link to="/dashboard" class="nav-link">
+                                    <i class="nav-icon fa fa-tachometer-alt c-blue"></i>
+                                    <p> Dashboard <span class="right badge badge-info badge-pill">5</span> </p>
+                                </router-link>
+                            </li>
+                            <li class="nav-item">
+                                <router-link to="/profile" class="nav-link">
+                                    <i class="nav-icon fa fa-user c-green"></i>
+                                    <p> Profile <span class="right badge badge-info badge-pill">5</span> </p>
+                                </router-link>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                document.getElementById('logout-form').submit();">
                                 <i class="nav-icon fa fa-power-off c-red"></i>
                                 <p>{{ __('Logout') }}</p>
                             </a>
@@ -165,11 +166,11 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                        <router-link to="/users" class="nav-link">
-                                            <i class="nav-icon fa fa-users c-orange"></i>
-                                            <p> Users Management <span class="right badge badge-info badge-pill">5</span> </p>
-                                        </router-link>
-                                    </li>
+                                    <router-link to="/users" class="nav-link">
+                                        <i class="nav-icon fa fa-users c-orange"></i>
+                                        <p> Users Management <span class="right badge badge-info badge-pill">5</span> </p>
+                                    </router-link>
+                                </li>
                                 <li class="nav-item">
                                     <a href="#" class="nav-link">
                                         <i class="fa fa-circle nav-icon"></i>
@@ -184,7 +185,7 @@
             </div>
             {{-- sidebar end --}}
         </aside>
-
+        
         {{-- Content Wrapper. Contains page content --}}
         <div class="content-wrapper">
             {{-- Content Header (Page header) --}}
@@ -203,7 +204,7 @@
                     </div> {{-- row --}}
                 </div> {{-- container-fluid --}}
             </div> {{-- content-header --}}
-
+            
             {{-- ************************************** --}}
             {{-- Main content --}}
             <div class="content">
@@ -213,7 +214,7 @@
             </div> {{-- Main content --}}
             {{-- ************************************** --}}
         </div> {{-- content-wrapper --}}
-
+        
         {{-- Control Sidebar --}}
         <aside class="control-sidebar control-sidebar-dark">
             {{-- Control sidebar content goes here --}}
@@ -222,7 +223,7 @@
                 <p>Sidebar content</p>
             </div>
         </aside> {{-- control-sidebar --}}
-
+        
         {{-- Main Footer --}}
         <footer class="main-footer">
             {{-- To the right --}}
@@ -234,15 +235,37 @@
             reserved.
         </footer>
     </div> {{-- wrapper end --}}
-
+    
     {{-- Scripts --}}
     <script src="{{ asset('js/app.js') }}"></script>
     <script src="{{ asset('js/jquery.min.js') }}"></script>
     <script src="{{ asset('js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('js/fontawesome.min.js') }}"></script>
     <script src="{{ asset('js/adminlte.min.js') }}"></script>
+    <script src="{{ asset('js/toastr.min.js') }}"></script>
     <script src="{{ asset('js/customjs.js') }}"></script>
+    
+    <script>
+        @if(Session::has('message'))
+        var type = "{{ Session::get('alert-type', 'info') }}";
+        switch(type){
+            case 'info':
+            toastr.info("{{ Session::get('message') }}");
+            break;
+            
+            case 'warning':
+            toastr.warning("{{ Session::get('message') }}");
+            break;
+            
+            case 'success':
+            toastr.success("{{ Session::get('message') }}");
+            break;
+            
+            case 'error':
+            toastr.error("{{ Session::get('message') }}");
+            break;
+        }
+        @endif
+    </script>
 </body>
-</body>
-
 </html>
