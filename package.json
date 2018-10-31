@@ -20,7 +20,6 @@
         "vue": "^2.5.17"
     },
     "dependencies": {
-        "@fortawesome/fontawesome-free": "^5.4.1",
         "admin-lte": "^3.0.0-alpha.2",
         "vue-router": "^3.0.1"
     }

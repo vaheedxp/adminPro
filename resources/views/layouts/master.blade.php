@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="{{asset('css/fontawesome.min.css')}}">
     <link rel="stylesheet" href="{{asset('css/adminlte.min.css')}}">
     <link rel="stylesheet" href="{{asset('css/toastr.min.css')}}">
+    <link rel="stylesheet" href="{{asset('css/icomoon.css')}}">
 </head>
 
 <body class="hold-transition sidebar-mini">
@@ -139,7 +140,7 @@
                             library --}}
                             <li class="nav-item">
                                 <router-link to="/dashboard" class="nav-link">
-                                    <i class="nav-icon fa fa-tachometer-alt c-blue"></i>
+                                    <i class="nav-icon icon-meter c-blue"></i>
                                     <p> Dashboard <span class="right badge badge-info badge-pill">5</span> </p>
                                 </router-link>
                             </li>
@@ -169,6 +170,12 @@
                                     <router-link to="/users" class="nav-link">
                                         <i class="nav-icon fa fa-users c-orange"></i>
                                         <p> Users Management <span class="right badge badge-info badge-pill">5</span> </p>
+                                    </router-link>
+                                </li>
+                                <li class="nav-item">
+                                    <router-link to="/students" class="nav-link">
+                                        <i class="nav-icon fa fa-users c-orange"></i>
+                                        <p> Students Management <span class="right badge badge-info badge-pill">5</span> </p>
                                     </router-link>
                                 </li>
                                 <li class="nav-item">

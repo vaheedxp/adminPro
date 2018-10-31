@@ -13,7 +13,7 @@ class StudentsController extends Controller
      */
     public function index()
     {
-        return view('pages.students.index', ['title' => 'Students']);
+        return view('users.create', ['title' => 'Users Main Page...']);
     }
 
     /**

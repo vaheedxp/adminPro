@@ -21,7 +21,7 @@ Route::get('/welcome', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('students', 'StudentsController@index')->name('studentsindex');
+Route::get('users2', 'StudentsController@index')->name('studentsindex');
 
 //Route for router-views
 Route::get('{path}', 'HomeController@index')->where('paht', '([A-z\d-\/_.]+)"');
