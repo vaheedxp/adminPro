@@ -11,10 +11,9 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
     <link rel="stylesheet" href="{{asset('css/app.css')}}">
     {{-- <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}"> --}}
-    <link rel="stylesheet" href="{{asset('css/fontawesome.min.css')}}">
-    <link rel="stylesheet" href="{{asset('css/adminlte.min.css')}}">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css" integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{asset('css/adminlte.css')}}">
     <link rel="stylesheet" href="{{asset('css/toastr.min.css')}}">
-    <link rel="stylesheet" href="{{asset('css/icomoon.css')}}">
 </head>
 
 <body class="hold-transition sidebar-mini">
@@ -113,7 +112,7 @@
         {{-- Navbar End --}}
         
         {{-- Main Sidebar Container --}}
-        <aside class="main-sidebar sidebar-dark-primary elevation-4">
+        <aside class="main-sidebar sidebar-ligth-primary elevation-4">
             {{-- Brand Logo --}}
             <a href="{{asset('/home')}}" class="brand-link">
                 <img src="{{asset('img/AdminLTELogo.png')}}" alt="AdminPro Logo" class="brand-image img-circle elevation-3"
@@ -140,7 +139,7 @@
                             library --}}
                             <li class="nav-item">
                                 <router-link to="/dashboard" class="nav-link">
-                                    <i class="nav-icon icon-meter c-blue"></i>
+                                    <i class="nav-icon fa fa-tachometer-alt c-blue"></i>
                                     <p> Dashboard <span class="right badge badge-info badge-pill">5</span> </p>
                                 </router-link>
                             </li>
@@ -169,13 +168,13 @@
                                 <li class="nav-item">
                                     <router-link to="/users" class="nav-link">
                                         <i class="nav-icon fa fa-users c-orange"></i>
-                                        <p> Users Management <span class="right badge badge-info badge-pill">5</span> </p>
+                                        <p> Users <span class="right badge badge-info badge-pill">5</span> </p>
                                     </router-link>
                                 </li>
                                 <li class="nav-item">
                                     <router-link to="/students" class="nav-link">
                                         <i class="nav-icon fa fa-users c-orange"></i>
-                                        <p> Students Management <span class="right badge badge-info badge-pill">5</span> </p>
+                                        <p> Students <span class="right badge badge-info badge-pill">5</span> </p>
                                     </router-link>
                                 </li>
                                 <li class="nav-item">
