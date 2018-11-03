@@ -6,7 +6,22 @@
                     <div class="card-header">Users Component</div>
 
                     <div class="card-body">
-                        
+                        <table class="table table-responsive">
+                            <thead>
+                            <tr>
+                                <td>ID</td>
+                                <td>Name</td>
+                                <td>Email</td>
+                                <td>Type</td>
+                                <td>Modify</td>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr v-for="user in users" :key="user.id">
+                                <td>{{user.id}}</td>
+                            </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
@@ -16,8 +31,31 @@
 
 <script>
     export default {
-        mounted() {
-            console.log('Component mounted.')
+        data() {
+            return {
+                users: {},
+                form: new Form({
+                    name: '',
+                    email: '',
+                    password: '',
+                    type: '',
+                    bio: '',
+                    photo: ''
+                })
+            }
+        },
+
+        methods: {
+            loadUsers() {
+                axios.get('api/user').then(({data}) => (this.user = data.data));
+            },
+            creatUser() {
+                this.form.post('api/user')
+            }
+        },
+
+        created() {
+            this.loadUsers();
         }
     }
 </script>

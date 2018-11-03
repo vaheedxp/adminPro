@@ -14594,10 +14594,54 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    mounted: function mounted() {
-        console.log('Component mounted.');
+    data: function data() {
+        return {
+            users: {},
+            form: new Form({
+                name: '',
+                email: '',
+                password: '',
+                type: '',
+                bio: '',
+                photo: ''
+            })
+        };
+    },
+
+
+    methods: {
+        loadUsers: function loadUsers() {
+            var _this = this;
+
+            axios.get('api/user').then(function (_ref) {
+                var data = _ref.data;
+                return _this.user = data.data;
+            });
+        },
+        creatUser: function creatUser() {
+            this.form.post('api/user');
+        }
+    },
+
+    created: function created() {
+        this.loadUsers();
     }
 });
 
@@ -14609,24 +14653,49 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", { staticClass: "container" }, [
+    _c("div", { staticClass: "row justify-content-center" }, [
+      _c("div", { staticClass: "col-md-12" }, [
+        _c("div", { staticClass: "card card-default" }, [
+          _c("div", { staticClass: "card-header" }, [
+            _vm._v("Users Component")
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "card-body" }, [
+            _c("table", { staticClass: "table table-responsive" }, [
+              _vm._m(0),
+              _vm._v(" "),
+              _c(
+                "tbody",
+                _vm._l(_vm.users, function(user) {
+                  return _c("tr", { key: user.id }, [
+                    _c("td", [_vm._v(_vm._s(user.id))])
+                  ])
+                })
+              )
+            ])
+          ])
+        ])
+      ])
+    ])
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "container" }, [
-      _c("div", { staticClass: "row justify-content-center" }, [
-        _c("div", { staticClass: "col-md-12" }, [
-          _c("div", { staticClass: "card card-default" }, [
-            _c("div", { staticClass: "card-header" }, [
-              _vm._v("Users Component")
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "card-body" })
-          ])
-        ])
+    return _c("thead", [
+      _c("tr", [
+        _c("td", [_vm._v("ID")]),
+        _vm._v(" "),
+        _c("td", [_vm._v("Name")]),
+        _vm._v(" "),
+        _c("td", [_vm._v("Email")]),
+        _vm._v(" "),
+        _c("td", [_vm._v("Type")]),
+        _vm._v(" "),
+        _c("td", [_vm._v("Modify")])
       ])
     ])
   }
@@ -14708,10 +14777,43 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    mounted: function mounted() {
-        console.log('Component mounted.');
+    data: function data() {
+        return {
+            users: {},
+            form: new form({
+                name: '',
+                email: '',
+                password: '',
+                type: '',
+                bio: '',
+                photo: ''
+            })
+        };
+    },
+
+    methods: {
+        loadUsers: function loadUsers() {
+            var _this = this;
+
+            axios.get("api/users").then(function (_ref) {
+                var data = _ref.data;
+                return _this.users = data;
+            });
+        }
+    },
+    created: function created() {
+        this.loadUsers();
     }
 });
 
@@ -14738,7 +14840,21 @@ var staticRenderFns = [
               _vm._v("Students Component")
             ]),
             _vm._v(" "),
-            _c("div", { staticClass: "card-body" })
+            _c("div", { staticClass: "card-body" }, [
+              _c("table", [
+                _c("thead", [
+                  _c("tr", [
+                    _c("td"),
+                    _vm._v(" "),
+                    _c("td"),
+                    _vm._v(" "),
+                    _c("td"),
+                    _vm._v(" "),
+                    _c("td")
+                  ])
+                ])
+              ])
+            ])
           ])
         ])
       ])

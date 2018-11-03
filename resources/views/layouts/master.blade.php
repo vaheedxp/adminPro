@@ -48,15 +48,19 @@
             
             {{-- Right navbar links --}}
             <ul class="navbar-nav ml-auto">
-                
                 <li class="nav-item">
-                    <a href="{{url('www/github/taqivaheed')}}" class="nav-link">
-                        <i class="fab fa-github c-indigo fa-lg"></i>
+                    <a href="https://github.com/vaheedxp" target="_blank" class="nav-link">
+                        <i class="fab fa-github c-github fa-lg"></i>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="www/twitter.com/taqi.vaheed" class="nav-link">
+                    <a href="http://twitter.com/TaqiVaheed" target="_blank" class="nav-link">
                         <i class="fab fa-twitter c-blue fa-lg"></i>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="https://github.com/vaheedxp" target="_blank" class="nav-link">
+                        <i class="fab fa-facebook c-facebook fa-lg"></i>
                     </a>
                 </li>
                 
@@ -199,7 +203,7 @@
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1 class="m-0 text-dark">{{$title}}</h1>
+                            <h1 class="m-0 text-dark"></h1>
                         </div><!-- /.col -->
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">

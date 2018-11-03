@@ -5,7 +5,16 @@
                 <div class="card card-default">
                     <div class="card-header">Students Component</div>
                     <div class="card-body">
-                        
+                        <table>
+                            <thead>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            </thead>
+                        </table>
                     </div>
                 </div>
             </div>
@@ -15,8 +24,26 @@
 
 <script>
     export default {
-        mounted() {
-            console.log('Component mounted.')
+        data() {
+            return {
+                users: {},
+                form: new form({
+                    name : '',
+                    email : '',
+                    password : '',
+                    type : '',
+                    bio : '',
+                    photo: ''
+                })
+            }
+        },
+        methods: {
+            loadUsers() {
+                axios.get("api/users").then(({ data }) => (this.users = data));
+            }
+        },
+        created() {
+            this.loadUsers();
         }
     }
 </script>
