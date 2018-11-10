@@ -25,25 +25,6 @@
 <script>
     export default {
         data() {
-            return {
-                users: {},
-                form: new form({
-                    name : '',
-                    email : '',
-                    password : '',
-                    type : '',
-                    bio : '',
-                    photo: ''
-                })
-            }
-        },
-        methods: {
-            loadUsers() {
-                axios.get("api/users").then(({ data }) => (this.users = data));
-            }
-        },
-        created() {
-            this.loadUsers();
         }
     }
 </script>
