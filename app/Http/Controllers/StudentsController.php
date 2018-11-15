@@ -15,7 +15,6 @@ class StudentsController extends Controller
     public function index()
     {
         return Student::all();
-//        return view('users.create', ['title' => 'Users Main Page...']);
     }
 
     /**

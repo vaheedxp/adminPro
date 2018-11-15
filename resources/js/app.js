@@ -1,10 +1,7 @@
-// require('bootstrap');
-// require('admin-lte');
-
+require('./bootstrap');
 window.Vue = require('vue');
-
 import VueRouter from 'vue-router'
-Vue.use(VueRouter)
+Vue.use(VueRouter);
 
 // Vue Routes
 let routes = [
@@ -18,9 +15,7 @@ let routes = [
 const router = new VueRouter({
     mode: 'history',
     routes // short for `routes: routes`
-})
-
-Vue.component('example-component', require('./components/ExampleComponent.vue'));
+});
 
 const app = new Vue({
     el: '#app',

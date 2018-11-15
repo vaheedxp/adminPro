@@ -13,13 +13,17 @@
                                 <td>Name</td>
                                 <td>Email</td>
                                 <td>Type</td>
-                                <td>Modify</td>
+                                <td>Bio</td>
                             </tr>
                             </thead>
                             <tbody>
-                            <tr v-for="user in users" :key="user.id">
-                                <td>{{user.id}}</td>
-                            </tr>
+                                <tr v-for="u in users">
+                                    <td>{{ u.id }}</td>
+                                    <td>{{ u.name }}</td>
+                                    <td>{{ u.email }}</td>
+                                    <td>{{ u.tyoe }}</td>
+                                    <td>{{ u.bio }}</td>
+                                </tr>
                             </tbody>
                         </table>
                     </div>
@@ -30,32 +34,22 @@
 </template>
 
 <script>
-    export default {
-        data() {
-            return {
-                users: {},
-                form: new Form({
-                    name: '',
-                    email: '',
-                    password: '',
-                    type: '',
-                    bio: '',
-                    photo: ''
-                })
-            }
-        },
-
-        methods: {
-            loadUsers() {
-                axios.get('api/user').then(({data}) => (this.user = data.data));
-            },
-            creatUser() {
-                this.form.post('api/user')
-            }
-        },
-
-        created() {
-            this.loadUsers();
+export default {
+    data() {
+        return {
+            users: []
         }
+    },
+    methods: {
+        loadUser() {
+            axios.get("./api/user").then(({data})=>(this.users = data));
+        },
+        createUser() {
+            this.form.post('api/user');
+        }
+    },
+    created() {
+        this.loadUser();
     }
+}
 </script>
