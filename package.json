@@ -23,6 +23,7 @@
     "dependencies": {
         "admin-lte": "^3.0.0-alpha.2",
         "laravel-vue-pagination": "^2.2.0",
+        "moment": "^2.22.2",
         "moment-jalaali": "^0.8.1",
         "vform": "^1.0.0",
         "vue-jalaali-datepicker": "^1.0.1",

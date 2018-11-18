@@ -4,7 +4,9 @@
             <div class="col-md-12">
                 <div class="card card-default">
                     <div class="card-header">
-                        <div class="float-left">Users Management</div>
+                        <div class="float-left">
+                            <h6>Users Management</h6>
+                        </div>
                         <div class="float-right">
                             <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#addUserModal"> <i class="fas fa-user-plus"></i> Add User</button>
                         </div>
@@ -17,7 +19,9 @@
                                 <td>Name</td>
                                 <td>Email</td>
                                 <td>Type</td>
+                                <td>Register Date</td>
                                 <td>Bio</td>
+                                <td>Actions</td>
                             </tr>
                             </thead>
                             <tbody>
@@ -25,8 +29,13 @@
                                     <td>{{ u.id }}</td>
                                     <td>{{ u.name }}</td>
                                     <td>{{ u.email }}</td>
-                                    <td>{{ u.type }}</td>
+                                    <td>{{ u.type | toUpperCase }}</td>
+                                    <td>{{ u.created_at | changeDate }}</td>
                                     <td>{{ u.bio }}</td>
+                                    <td>
+                                        <a href="#"><i class="fas fa-edit c-green"></i></a>
+                                        <a href="#"><i class="fas fa-trash c-red"></i></a>
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>
@@ -115,7 +124,8 @@ export default {
                 password: '',
                 type: '',
                 bio: '',
-                photo: ''
+                photo: '',
+                created_at: ''
             }),
             users: {}
         }
@@ -129,8 +139,6 @@ export default {
             },
         createUser() {
             this.form.post('api/users');
-            this.form.clear();
-            $("#addUserModal").hide();
             this.loadUser();
         },
         loadUser() {

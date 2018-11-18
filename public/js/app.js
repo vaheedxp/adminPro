@@ -17477,37 +17477,48 @@ module.exports = __webpack_require__(184);
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vform__ = __webpack_require__(163);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vform___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vform__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_router__ = __webpack_require__(168);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_moment__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_moment__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vform__ = __webpack_require__(163);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vform___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_vform__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vue_router__ = __webpack_require__(168);
 __webpack_require__(138);
 window.Vue = __webpack_require__(160);
 
+
+
 // vform for form validation
 
-window.Form = __WEBPACK_IMPORTED_MODULE_0_vform__["Form"];
+window.Form = __WEBPACK_IMPORTED_MODULE_1_vform__["Form"];
 
 // Moment-Jalaali
-var moment = __webpack_require__(164);
-moment().format('jYYYY/jM/jD');
+var momentJalali = __webpack_require__(164);
+momentJalali().format('jYYYY/jM/jD');
 
 // Component for laravel-vue-pagination
 Vue.component('pagination', __webpack_require__(167));
 
 // VForm Components for form validation
-Vue.component(__WEBPACK_IMPORTED_MODULE_0_vform__["HasError"].name, __WEBPACK_IMPORTED_MODULE_0_vform__["HasError"]);
-Vue.component(__WEBPACK_IMPORTED_MODULE_0_vform__["AlertError"].name, __WEBPACK_IMPORTED_MODULE_0_vform__["AlertError"]);
+Vue.component(__WEBPACK_IMPORTED_MODULE_1_vform__["HasError"].name, __WEBPACK_IMPORTED_MODULE_1_vform__["HasError"]);
+Vue.component(__WEBPACK_IMPORTED_MODULE_1_vform__["AlertError"].name, __WEBPACK_IMPORTED_MODULE_1_vform__["AlertError"]);
+
+Vue.filter('toUpperCase', function (text) {
+    return text.charAt(0).toUpperCase() + text.slice(1);
+});
+Vue.filter('changeDate', function (date) {
+    return __WEBPACK_IMPORTED_MODULE_0_moment___default()(date).format('YYYY/MM/D');
+});
 
 /* ************************ */
 // VueRouter for routing
 
-Vue.use(__WEBPACK_IMPORTED_MODULE_1_vue_router__["a" /* default */]);
+Vue.use(__WEBPACK_IMPORTED_MODULE_2_vue_router__["a" /* default */]);
 
 // Vue Routes
 var routes = [{ path: '/dashboard', component: __webpack_require__(169) }, { path: '/profile', component: __webpack_require__(172) }, { path: '/users', component: __webpack_require__(175) }, { path: '/students', component: __webpack_require__(178) }, { path: '/employees', component: __webpack_require__(181) }];
 
 // Router
-var router = new __WEBPACK_IMPORTED_MODULE_1_vue_router__["a" /* default */]({
+var router = new __WEBPACK_IMPORTED_MODULE_2_vue_router__["a" /* default */]({
     mode: 'history',
     routes: routes // short for `routes: routes`
 });
@@ -66469,6 +66480,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -66479,7 +66499,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 password: '',
                 type: '',
                 bio: '',
-                photo: ''
+                photo: '',
+                created_at: ''
             }),
             users: {}
         };
@@ -66497,8 +66518,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         },
         createUser: function createUser() {
             this.form.post('api/users');
-            this.form.clear();
-            $("#addUserModal").hide();
             this.loadUser();
         },
         loadUser: function loadUser() {
@@ -66543,9 +66562,15 @@ var render = function() {
                     _vm._v(" "),
                     _c("td", [_vm._v(_vm._s(u.email))]),
                     _vm._v(" "),
-                    _c("td", [_vm._v(_vm._s(u.type))]),
+                    _c("td", [_vm._v(_vm._s(_vm._f("toUpperCase")(u.type)))]),
                     _vm._v(" "),
-                    _c("td", [_vm._v(_vm._s(u.bio))])
+                    _c("td", [
+                      _vm._v(_vm._s(_vm._f("changeDate")(u.created_at)))
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(u.bio))]),
+                    _vm._v(" "),
+                    _vm._m(2, true)
                   ])
                 })
               )
@@ -66601,7 +66626,7 @@ var render = function() {
           { staticClass: "modal-dialog", attrs: { role: "document" } },
           [
             _c("div", { staticClass: "modal-content" }, [
-              _vm._m(2),
+              _vm._m(3),
               _vm._v(" "),
               _c(
                 "form",
@@ -66841,7 +66866,7 @@ var render = function() {
                     )
                   ]),
                   _vm._v(" "),
-                  _vm._m(3)
+                  _vm._m(4)
                 ]
               )
             ])
@@ -66857,7 +66882,9 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "card-header" }, [
-      _c("div", { staticClass: "float-left" }, [_vm._v("Users Management")]),
+      _c("div", { staticClass: "float-left" }, [
+        _c("h6", [_vm._v("Users Management")])
+      ]),
       _vm._v(" "),
       _c("div", { staticClass: "float-right" }, [
         _c(
@@ -66889,7 +66916,25 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("td", [_vm._v("Type")]),
         _vm._v(" "),
-        _c("td", [_vm._v("Bio")])
+        _c("td", [_vm._v("Register Date")]),
+        _vm._v(" "),
+        _c("td", [_vm._v("Bio")]),
+        _vm._v(" "),
+        _c("td", [_vm._v("Actions")])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [
+      _c("a", { attrs: { href: "#" } }, [
+        _c("i", { staticClass: "fas fa-edit c-green" })
+      ]),
+      _vm._v(" "),
+      _c("a", { attrs: { href: "#" } }, [
+        _c("i", { staticClass: "fas fa-trash c-red" })
       ])
     ])
   },

@@ -1,13 +1,15 @@
 require('./bootstrap');
 window.Vue = require('vue');
 
+import moment from 'moment';
+
 // vform for form validation
 import { Form, HasError, AlertError } from 'vform';
 window.Form = Form;
 
 // Moment-Jalaali
-var moment = require('moment-jalaali');
-moment().format('jYYYY/jM/jD');
+var momentJalali = require('moment-jalaali');
+momentJalali().format('jYYYY/jM/jD');
 
 // Component for laravel-vue-pagination
 Vue.component('pagination', require('laravel-vue-pagination'));
@@ -15,6 +17,13 @@ Vue.component('pagination', require('laravel-vue-pagination'));
 // VForm Components for form validation
 Vue.component(HasError.name, HasError);
 Vue.component(AlertError.name, AlertError);
+
+Vue.filter('toUpperCase', function (text) {
+    return text.charAt(0).toUpperCase() + text.slice(1);
+});
+Vue.filter('changeDate', function (date) {
+    return moment(date).format('YYYY/MM/D');
+});
 
 /* ************************ */
 // VueRouter for routing
