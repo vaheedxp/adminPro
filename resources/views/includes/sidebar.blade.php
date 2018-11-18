@@ -26,18 +26,18 @@
                     library --}}
                     <li class="nav-item">
                         <router-link to="/dashboard" class="nav-link">
-                            <i class="nav-icon fa fa-tachometer-alt c-blue"></i> Dashboard
+                            <i class="nav-icon fas fa-tachometer-alt c-blue"></i> Dashboard
                         </router-link>
                     </li>
                     <li class="nav-item">
                         <router-link to="/profile" class="nav-link">
-                            <i class="nav-icon fa fa-user c-green"></i> Profile
+                            <i class="nav-icon fas fa-user c-green"></i> Profile
                         </router-link>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault();
                         document.getElementById('logout-form').submit();">
-                        <i class="nav-icon fa fa-power-off c-red"></i>
+                        <i class="nav-icon fas fa-power-off c-red"></i>
                         <p>{{ __('Logout') }}</p>
                     </a>
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
@@ -46,14 +46,20 @@
                 </li>
                 <li class="nav-item">
                     <router-link to="/users" class="nav-link">
-                        <i class="nav-icon fa fa-users c-orange"></i>
+                        <i class="nav-icon fas fa-users c-orange"></i>
                         <p> Users <span class="right badge badge-info badge-pill">5</span> </p>
                     </router-link>
                 </li>
                 <li class="nav-item">
                     <router-link to="/students" class="nav-link">
-                        <i class="nav-icon fa fa-users c-orange"></i>
+                        <i class="nav-icon fas fa-user-graduate c-indigo"></i>
                         <p> Students <span class="right badge badge-info badge-pill">5</span> </p>
+                    </router-link>
+                </li>
+                <li class="nav-item">
+                    <router-link to="/employees" class="nav-link">
+                        <i class="nav-icon fas fa-user-tie c-blue"></i>
+                        <p>Employees</p>
                     </router-link>
                 </li>
             </ul>

@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
-
-use App\Student;
+namespace App\Http\Controllers\API;
+use App\User;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Hash;
 
-class StudentsController extends Controller
+class UsersController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,17 +15,7 @@ class StudentsController extends Controller
      */
     public function index()
     {
-        return Student::orderby('id', 'DESC')->paginate(5);
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        return User::orderby('id', 'DESC')->paginate(3);
     }
 
     /**
@@ -35,14 +26,15 @@ class StudentsController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'firstname' => 'required|max:255',
-            'lastname' => 'required|max:255',
+        return User::create([
+            'name' => $request['name'],
+            'email' => $request['email'],
+            'type' => $request['type'],
+            'bio' => $request['bio'],
+            'photo' => $request['photo'],
+            'password' => Hash::make($request['password'])
         ]);
-
-        Student::create($request->all());
-        return response()->json(['st', $request->all()]);
-        // return(['message' => 'Student Added Successfully']);
+        // return ['message' => 'You called store method'];
     }
 
     /**
@@ -52,17 +44,6 @@ class StudentsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id)
-    {
-        return Student::find($id);
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
     {
         //
     }
