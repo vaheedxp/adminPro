@@ -1,5 +1,5 @@
 * text=auto
-* static/* linguist-vendored
+static/* linguist-vendored
 *.css linguist-vendored
 *.scss linguist-vendored
 *.js linguist-vendored
