@@ -5,6 +5,7 @@ use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 
 class UsersController extends Controller
 {
@@ -15,66 +16,62 @@ class UsersController extends Controller
      */
     public function index()
     {
-        return User::orderby('id', 'DESC')->paginate(3);
+        return User::orderby('id', 'DESC')->paginate(10);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-
         $this->validate($request, [
             'name' => 'required|max:191',
             'email' => 'required|max:191|unique:users',
             'password' => 'required|min:6'
         ]);
-
+        
         return User::create([
             'name' => $request['name'],
             'email' => $request['email'],
             'type' => $request['type'],
             'bio' => $request['bio'],
+            'notes' => $request['notes'],
+            'education' => $request['education'],
+            'location' => $request['location'],
+            'skills' => $request['skills'],
             'photo' => $request['photo'],
+            'job' => $request['job'],
             'password' => Hash::make($request['password'])
         ]);
-        // return ['message' => 'You called store method'];
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
+    public function profile() {
+        return auth('api')->user();
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    public function updateProfile(Request $request){
+        $user = auth('api')->user();
+        if ($request->photo) {
+            $photo_name = time().'.'. explode('/', explode(':', substr($request->photo, 0, strpos($request->photo, ';')))[1])[1];
+	        \Image::make($request->photo)->save(public_path('/img/users/').$photo_name);
+        }
+        return ['message' => 'updating profile...'];
+    }
+
+    public function update(Request $request, $id)
+    {
+        $this->validate($request, [
+            'name' => 'required|max:191',
+            'email' => 'required|max:191|unique:users,email,'.$id,
+            'password' => 'sometimes|min:6'
+        ]);
+        User::findOrFail($id)->update($request->all());
+    }
+
     public function destroy($id)
     {
-        //
+        return User::destroy($id);
     }
 }

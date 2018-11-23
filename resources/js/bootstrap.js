@@ -12,8 +12,8 @@ try {
     window.$ = window.jQuery = require('jquery');
     // global.$ = global.jQuery = require('jquery');
 
-    // require('bootstrap');
-    // require('admin-lte');
+    require('bootstrap');
+    require('admin-lte');
 } catch (e) {}
 
 /**

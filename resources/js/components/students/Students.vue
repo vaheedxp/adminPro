@@ -60,7 +60,7 @@
                             <h6>Students Management</h6>
                         </div>
                         <div class="float-right">
-                            <button class="btn btn-info btn-sm" v-on:click="addForm = !addForm">Add <i class="fas fa-plus"></i></button>
+                            <button class="btn btn-info btn-sm" v-on:click="addForm = !addForm">Add <i class="fa fa-plus"></i></button>
                         </div>
                         <div class="float-right">
                             <!-- SEARCH FORM -->
@@ -80,11 +80,11 @@
                         <table class="table table-sm">
                             <thead>
                                 <tr>
-                                    <th class="c-pink"><i class="fas fa-list-ul"></i></th>
-                                    <th class="c-pink"><i class="fas fa-user"></i> First Name</th>
+                                    <th class="c-pink"><i class="fa fa-list-ul"></i></th>
+                                    <th class="c-pink"><i class="fa fa-user"></i> First Name</th>
                                     <th class="c-green">Last Name</th>
-                                    <th class="c-orange"><i class="fas fa-at"></i> Email</th>
-                                    <th class="c-indigo"><i class="fas fa-university"></i> Collage</th>
+                                    <th class="c-orange"><i class="fa fa-at"></i> Email</th>
+                                    <th class="c-indigo"><i class="fa fa-university"></i> Collage</th>
                                     <th class="c-red">Username</th>
                                     <th class="c-cyan">Actions</th>
                                 </tr>
@@ -98,9 +98,9 @@
                                     <td>{{ st.collage }}</td>
                                     <td>{{ st.username }}</td>
                                     <td>
-                                        <a href="#" @click.prevent="viewSt(st.id)"><i class="fas fa-eye c-blue"></i></a>
-                                        <a href="#" @click.prevent="editSt(st.id)"><i class="fas fa-pencil c-orange"></i></a>
-                                        <a href="#" @click.prevent="deleteSt(st.id)"><i class="fas fa-trash c-red"></i></a>
+                                        <a href="#" @click.prevent="viewSt(st.id)"><i class="fa fa-eye c-blue"></i></a>
+                                        <a href="#" @click.prevent="editSt(st.id)"><i class="fa fa-pencil c-orange"></i></a>
+                                        <a href="#" @click.prevent="deleteSt(st.id)"><i class="fa fa-trash c-red"></i></a>
                                     </td>
                                 </tr>
                             </tbody>
@@ -108,8 +108,8 @@
                     </div>
                     <div class="card-footer">
                         <pagination :data="students" @pagination-change-page="getResults" :show-disabled="true">
-                            <span slot="prev-nav"><i class="fas fa-chevron-left"></i></span>
-	                        <span slot="next-nav"><i class="fas fa-chevron-right"></i></span>
+                            <span slot="prev-nav"><i class="fa fa-chevron-left"></i></span>
+	                        <span slot="next-nav"><i class="fa fa-chevron-right"></i></span>
                         </pagination>
                     </div>
                 </div>
@@ -117,7 +117,7 @@
                     <div class="card card-info">
                         <div class="card-header">
                             <h6 class="float-left">Student Information</h6>
-                            <a href="#" @click="showInfo = false"><i class="float-right fas fa-times" ></i></a>
+                            <a href="#" @click="showInfo = false"><i class="float-right fa fa-times" ></i></a>
                         </div>
                         <div class="card-body">
                             <label for="fname">{{ studentInfo.firstname }}</label>

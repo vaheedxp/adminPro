@@ -4,8 +4,47 @@ window.Vue = require('vue');
 import moment from 'moment';
 
 // vform for form validation
-import { Form, HasError, AlertError } from 'vform';
+import {
+    Form,
+    HasError,
+    AlertError
+} from 'vform';
 window.Form = Form;
+
+window.Fire = new Vue();
+
+import swal from 'sweetalert2';
+window.swal = swal;
+const toast = swal.mixin({
+    toast: true,
+    position: 'top-end',
+    showConfirmButton: false,
+    timer: 3000
+});
+window.toast = toast;
+
+import VueProgressBar from 'vue-progressbar';
+Vue.use(VueProgressBar, {
+    color: '#2196F3',
+    failedColor: 'red',
+    height: '3px'
+});
+
+//Passport Authontications
+Vue.component(
+    'passport-clients',
+    require('./components/passport/Clients.vue')
+);
+
+Vue.component(
+    'passport-authorized-clients',
+    require('./components/passport/AuthorizedClients.vue')
+);
+
+Vue.component(
+    'passport-personal-access-tokens',
+    require('./components/passport/PersonalAccessTokens.vue')
+);
 
 // Moment-Jalaali
 var momentJalali = require('moment-jalaali');
@@ -31,12 +70,30 @@ import VueRouter from 'vue-router';
 Vue.use(VueRouter);
 
 // Vue Routes
-let routes = [
-    { path: '/dashboard', component: require('./components/Dashboard.vue') },
-    { path: '/profile', component: require('./components/Profile.vue') },
-    { path: '/users', component: require('./components/Users.vue') },
-    { path: '/students', component: require('./components/students/Students.vue') },
-    { path: '/employees', component: require('./components/employee/Employees.vue') }
+let routes = [{
+        path: '/dashboard',
+        component: require('./components/Dashboard.vue')
+    },
+    {
+        path: '/developer',
+        component: require('./components/Developer.vue')
+    },
+    {
+        path: '/profile',
+        component: require('./components/Profile.vue')
+    },
+    {
+        path: '/users',
+        component: require('./components/Users.vue')
+    },
+    {
+        path: '/students',
+        component: require('./components/students/Students.vue')
+    },
+    {
+        path: '/employees',
+        component: require('./components/employee/Employees.vue')
+    }
 ];
 
 // Router

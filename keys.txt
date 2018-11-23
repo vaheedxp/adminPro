@@ -1,0 +1,8 @@
+D:\CodePlace\web\adminpro>php artisan passport:install
+Encryption keys generated successfully.
+Personal access client created successfully.
+Client ID: 1
+Client Secret: KbpMGweU5ytfbumnMYDDItmmlwAgoj42DuYotVQg
+Password grant client created successfully.
+Client ID: 2
+Client Secret: 6PliLeoc1nZ8FssnLBkHzwh1dleIWxGeIz8iFyAC

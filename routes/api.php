@@ -7,3 +7,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) { return
 Route::resource('students', 'StudentsController');
 Route::resource('employees', 'EmployeeController');
 Route::apiResource('users' , 'API\UsersController');
+Route::get('profile' , 'API\UsersController@profile');
+Route::put('profile' , 'API\UsersController@updateProfile');
