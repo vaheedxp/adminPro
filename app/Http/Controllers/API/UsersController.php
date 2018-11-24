@@ -16,7 +16,7 @@ class UsersController extends Controller
      */
     public function index()
     {
-        return User::orderby('id', 'DESC')->paginate(10);
+        return User::orderby('id', 'DESC')->paginate(2);
     }
 
     public function store(Request $request)

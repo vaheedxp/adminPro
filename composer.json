@@ -12,7 +12,8 @@
         "laravel/nova": "*",
         "laravel/passport": "^7.0",
         "laravel/tinker": "^1.0",
-        "launcher/mercurius": "^0.0.10"
+        "launcher/mercurius": "^0.0.10",
+        "martinlindhe/laravel-vue-i18n-generator": "^0.1.31"
     },
     "require-dev": {
         "beyondcode/laravel-dump-server": "^1.0",

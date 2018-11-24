@@ -29,77 +29,78 @@
             </div>
 
             <ul class="components">
+                <li>
+                    <router-link to="/profile" title="Profile"><img src="{{ asset('img/user1-128x128.jpg') }}" class="img-circle" style="width: 30px;"
+                            alt="Profile Picture"></router-link>
+                </li>
                 <li class="active">
                     <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
                         <i class="fas fa-home red"></i>
                     </a>
                     <ul class="collapse" id="homeSubmenu">
                         <li>
-                            <router-link to="/dashboard"> <i class="fas fa-tachometer-alt blue"></i></router-link>
+                            <router-link to="/dashboard" title="Dashboard"> <i class="fas fa-tachometer-alt blue"></i></router-link>
                         </li>
                         <li>
-                            <router-link to="/developer"> <i class="fas fa-cogs orange"></i></router-link>
+                            <router-link to="/developer" title="Developer"> <i class="fas fa-cogs green"></i></router-link>
                         </li>
                         <li>
-                            <router-link to="/users"> <i class="fas fa-users cyan"></i></router-link>
+                            <router-link to="/users" title="Users"> <i class="fas fa-users cyan"></i></router-link>
                         </li>
                         <li>
-                            <router-link to="/employees"> <i class="fas fa-user-cog green"></i></router-link>
+                            <router-link to="/employees" title="Employees"> <i class="fas fa-user-cog orange"></i></router-link>
                         </li>
                     </ul>
                 </li>
                 <li>
                     <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
-                        <i class="fa fa-address-card"></i>
+                        <i class="fa fa-address-card green"></i>
                     </a>
                     <ul class="collapse" id="pageSubmenu">
                         <li>
-                            <router-link to="/inbox"> <i class="fa fa-at red"></i></router-link>
+                            <router-link to="/inbox" title="Inbox"> <i class="fa fa-at red"></i></router-link>
                         </li>
                         <li>
-                            <router-link to="/chats"> <i class="fa fa-comment green"></i></router-link>
+                            <router-link to="/chats" title="Chats"> <i class="fa fa-comment green"></i></router-link>
                         </li>
                         <li>
-                            <router-link to="/comments"> <i class="fa fa-comments pink"></i></router-link>
+                            <router-link to="/comments" title="Comments"> <i class="fa fa-comments pink"></i></router-link>
                         </li>
                     </ul>
                 </li>
                 <li>
-                    <router-link to="/profile"> <i class="fa fa-image purple"></i></router-link>
+                    <router-link to="/setting" title="Settings"> <i class="fa fa-cog fa-spin yellow"></i></router-link>
                 </li>
                 <li>
-                    <router-link to="/setting"> <i class="fa fa-cog fa-spin yellow"></i></router-link>
+                    <router-link to="/faq" title="FAQ"> <i class="fa fa-question-circle teal"></i></router-link>
                 </li>
                 <li>
-                    <router-link to="/faq"> <i class="fa fa-question-circle teal"></i></router-link>
+                    <router-link to="/contact" title="Contact"> <i class="fa fa-paper-plane facebook"></i></router-link>
                 </li>
                 <li>
-                    <router-link to="/contact"> <i class="fa fa-paper-plane facebook"></i></router-link>
-                </li>
-                <li>
-                    <router-link to="/info"> <i class="fa fa-info"></i></router-link>
+                    <router-link to="/info" title="Info"> <i class="fa fa-info yellow"></i></router-link>
                 </li>
             </ul>
         </nav>
 
         <div id="content">
-            <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <button type="button" id="sidebarCollapse" class="btn">
-                    <i class="fa fa-bars"></i>
+            <nav class="navbar navbar-expand-lg navbar-light bg-light" style="padding: 0 40px;">
+                <button type="button" id="sidebarCollapse" class="navbar-toggler">
+                    <i class="fa fa-grip-horizontal orange"></i>
                 </button>
-                <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse"
+                {{-- <button class="btn d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse"
                     data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                     aria-label="Toggle navigation">
                     <i class="fa fa-align-justify"></i>
+                </button> --}}
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+                    <i class="fa fa-bars blue"></i>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <a class="navbar-brand" href="{{ url('/') }}">
                         {{ config('app.name', 'Laravel') }}
                     </a>
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
 
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
@@ -122,10 +123,16 @@
                                 @endif
                             </li>
                             @else
-                            <li class="nav-item dropdown" style="padding-right: 40px;">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                            <li class="nav-item dropdown" style="margin-right: 40px;">
+                                {{-- <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }} <span class="caret"></span>
+                                </a> --}}
+
+                                <a href="#" id="navbarDropdown" class="nav-link" role="button" data-toggle="dropdown"
+                                    aria-expanded="false" v-pre>
+                                    <img class="img-circle" style="width: 20px; border: 1px solid teal" src="{{ asset('img/users/profile.png') }}"
+                                        alt="">
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">

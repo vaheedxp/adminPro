@@ -32093,6 +32093,11 @@ readers do not read off random characters that represent icons */
   font-weight: 900;
 }
 
+.dark-th {
+  background-color: #171B1D;
+  color: white;
+}
+
 /* ---------------------------------------------------
     Modal STYLE
 ----------------------------------------------------- */
@@ -32132,6 +32137,10 @@ readers do not read off random characters that represent icons */
   border-top: 1px solid #f8f8f8;
 }
 
+.navbar-toggler {
+  border: 0;
+}
+
 /* ---------------------------------------------------
     SIDEBAR STYLE
 ----------------------------------------------------- */
@@ -32158,6 +32167,7 @@ a:focus {
   background-color: transparent !important;
   border-radius: 0;
   margin: 0 10px;
+  display: none;
 }
 
 #sidebar {
@@ -32288,8 +32298,6 @@ a.article:hover {
 #content {
   width: 100%;
   min-height: 100vh;
-  -webkit-transition: all 0.3s;
-  transition: all 0.3s;
 }
 
 /* ---------------------------------------------------
@@ -32351,9 +32359,7 @@ a.article:hover {
   }
 
   #sidebarCollapse {
-    background-color: transparent !important;
-    border-radius: 0;
-    margin: 0 10px;
+    display: inline-block;
   }
 }
 

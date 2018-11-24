@@ -75319,7 +75319,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "container" }, [
+    return _c("div", { staticClass: "container-fluid" }, [
       _c("div", { staticClass: "row justify-content-center" }, [
         _c("div", { staticClass: "col-md-12" }, [
           _c("div", { staticClass: "mt-4" }, [
@@ -77107,122 +77107,130 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  data: function data() {
-    return {
-      modalMode: false,
-      form: new Form({
-        id: "",
-        name: "",
-        email: "",
-        password: "",
-        type: "",
-        bio: "",
-        job: "",
-        education: "",
-        location: "",
-        notes: "",
-        skills: "",
-        photo: "",
-        created_at: ""
-      }),
-      users: {}
-    };
-  },
-
-  methods: {
-    showAddModal: function showAddModal() {
-      this.modalMode = false;
-      this.form.clear();
-      this.form.reset();
-      $("#userModal").modal("show");
+    data: function data() {
+        return {
+            modalMode: false,
+            form: new Form({
+                id: "",
+                name: "",
+                email: "",
+                password: "",
+                type: "",
+                bio: "",
+                job: "",
+                education: "",
+                location: "",
+                notes: "",
+                skills: "",
+                photo: "",
+                created_at: ""
+            }),
+            users: {}
+        };
     },
-    showEditModal: function showEditModal(user) {
-      this.modalMode = true;
-      this.form.clear();
-      this.form.reset();
-      $("#userModal").modal("show");
-      this.form.fill(user);
-    },
-    loadUser: function loadUser() {
-      var _this = this;
 
-      axios.get("api/users").then(function (_ref) {
-        var data = _ref.data;
-        return _this.users = data;
-      });
-    },
-    getResults: function getResults() {
-      var _this2 = this;
+    methods: {
+        showAddModal: function showAddModal() {
+            this.modalMode = false;
+            this.form.clear();
+            this.form.reset();
+            $("#userModal").modal("show");
+        },
+        showEditModal: function showEditModal(user) {
+            this.modalMode = true;
+            this.form.clear();
+            this.form.reset();
+            $("#userModal").modal("show");
+            this.form.fill(user);
+        },
+        loadUser: function loadUser() {
+            var _this = this;
 
-      var page = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
+            axios.get("api/users").then(function (_ref) {
+                var data = _ref.data;
+                return _this.users = data;
+            });
+        },
+        getResults: function getResults() {
+            var _this2 = this;
 
-      axios.get("./api/users?page=" + page).then(function (response) {
-        _this2.users = response.data;
-      });
-    },
-    createUser: function createUser() {
-      var _this3 = this;
+            var page = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
 
-      this.$Progress.start();
-      this.form.post("api/users").then(function (result) {
-        $("#userModal").modal("hide");
-        toast({ type: "success", title: "New User Added Successfully!" });
-        _this3.$Progress.finish();
-        Fire.$emit("updateUser");
-      }).catch(function (err) {
-        toast({
-          type: "warning",
-          title: "Sorry! Somting was wrong. The user was not created. Try again!"
-        });
-      });
-    },
-    updateUser: function updateUser() {
-      var _this4 = this;
+            axios.get("./api/users?page=" + page).then(function (response) {
+                _this2.users = response.data;
+            });
+        },
+        createUser: function createUser() {
+            var _this3 = this;
 
-      this.$Progress.start();
-      this.form.put("api/users/" + this.form.id).then(function (result) {
-        Fire.$emit("updateUser");
-        $("#userModal").modal("hide");
-        swal("Updated!", "The User has been updated", "success");
-        _this4.$Progress.finish();
-      }).catch(function (err) {
-        _this4.$Progress.fail();
-      });
-    },
-    deleteUser: function deleteUser(id) {
-      swal({
-        title: "Delete User",
-        text: "Are you sure to delete this user",
-        type: "warning",
-        showCancelButton: true,
-        confirmButtonColor: "#3085d6",
-        cancelButtonColor: "#d33",
-        confirmButtonText: "Yes, delete it!"
-      }).then(function (result) {
-        if (result.value) {
-          axios.delete("api/users/" + id).then(function (result) {
-            swal("Deleted!", "The user has been deleted.", "success");
-            Fire.$emit("updateUser");
-          }).catch(function (err) {
-            swal("Warning!", "Somting was wrong, try again.", "warning");
-          });
+            this.$Progress.start();
+            this.form.post("api/users").then(function (result) {
+                $("#userModal").modal("hide");
+                toast({
+                    type: "success",
+                    title: "New User Added Successfully!"
+                });
+                _this3.$Progress.finish();
+                Fire.$emit("updateUser");
+            }).catch(function (err) {
+                toast({
+                    type: "warning",
+                    title: "Sorry! Somting was wrong. The user was not created. Try again!"
+                });
+            });
+        },
+        updateUser: function updateUser() {
+            var _this4 = this;
+
+            this.$Progress.start();
+            this.form.put("api/users/" + this.form.id).then(function (result) {
+                Fire.$emit("updateUser");
+                $("#userModal").modal("hide");
+                swal("Updated!", "The User has been updated", "success");
+                _this4.$Progress.finish();
+            }).catch(function (err) {
+                _this4.$Progress.fail();
+            });
+        },
+        deleteUser: function deleteUser(id) {
+            swal({
+                title: "Delete User",
+                text: "Are you sure to delete this user",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Yes, delete it!"
+            }).then(function (result) {
+                if (result.value) {
+                    axios.delete("api/users/" + id).then(function (result) {
+                        swal("Deleted!", "The user has been deleted.", "success");
+                        Fire.$emit("updateUser");
+                    }).catch(function (err) {
+                        swal("Warning!", "Somting was wrong, try again.", "warning");
+                    });
+                }
+            });
+        },
+        resetForm: function resetForm() {
+            this.form.reset();
         }
-      });
     },
-    resetForm: function resetForm() {
-      this.form.reset();
-    }
-  },
-  created: function created() {
-    var _this5 = this;
+    created: function created() {
+        var _this5 = this;
 
-    this.loadUser();
-    Fire.$on("updateUser", function () {
-      _this5.loadUser();
-    });
-  }
+        this.loadUser();
+        Fire.$on("updateUser", function () {
+            _this5.loadUser();
+        });
+    }
 });
 
 /***/ }),
@@ -77233,107 +77241,110 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "container" }, [
-    _c("div", { staticClass: "row justify-content-center" }, [
-      _c("div", { staticClass: "col-md-12" }, [
-        _c("div", { staticClass: "card card-default" }, [
-          _c("div", { staticClass: "card-header" }, [
-            _vm._m(0),
-            _vm._v(" "),
-            _c("div", { staticClass: "float-right" }, [
-              _c(
-                "button",
-                {
-                  staticClass: "btn btn-primary btn-sm",
-                  attrs: { type: "button" },
-                  on: {
-                    click: function($event) {
-                      _vm.showAddModal()
-                    }
-                  }
-                },
-                [
-                  _c("i", { staticClass: "fa fa-user-plus" }),
-                  _vm._v(" Add User")
-                ]
-              )
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "card-body" }, [
-            _c("table", { staticClass: "table table-sm" }, [
-              _vm._m(1),
+  return _c("section", { staticClass: "content" }, [
+    _c("div", { staticClass: "container-fluid" }, [
+      _c("div", { staticClass: "row justify-content-center" }, [
+        _c("div", { staticClass: "col-md-12" }, [
+          _c("div", { staticClass: "card card-default" }, [
+            _c("div", { staticClass: "card-header" }, [
+              _vm._m(0),
               _vm._v(" "),
-              _c(
-                "tbody",
-                _vm._l(_vm.users.data, function(u) {
-                  return _c("tr", { key: u.id }, [
-                    _c("td", [_vm._v(_vm._s(u.id))]),
-                    _vm._v(" "),
-                    _c("td", [_vm._v(_vm._s(u.name))]),
-                    _vm._v(" "),
-                    _c("td", [_vm._v(_vm._s(_vm._f("toUpperCase")(u.type)))]),
-                    _vm._v(" "),
-                    _c("td", [
-                      _c(
-                        "a",
-                        {
-                          attrs: { href: "#" },
-                          on: {
-                            click: function($event) {
-                              _vm.showEditModal(u)
-                            }
-                          }
-                        },
-                        [_c("i", { staticClass: "fa fa-edit c-green" })]
-                      ),
+              _c("div", { staticClass: "float-right" }, [
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-primary btn-sm",
+                    attrs: { type: "button" },
+                    on: {
+                      click: function($event) {
+                        _vm.showAddModal()
+                      }
+                    }
+                  },
+                  [
+                    _c("i", { staticClass: "fa fa-user-plus" }),
+                    _vm._v("\n                                Add User")
+                  ]
+                )
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "card-body" }, [
+              _c("table", { staticClass: "table table-sm" }, [
+                _vm._m(1),
+                _vm._v(" "),
+                _c(
+                  "tbody",
+                  _vm._l(_vm.users.data, function(u) {
+                    return _c("tr", { key: u.id }, [
+                      _c("td", [_vm._v(_vm._s(u.id))]),
                       _vm._v(" "),
-                      _c(
-                        "a",
-                        {
-                          attrs: { href: "#" },
-                          on: {
-                            click: function($event) {
-                              _vm.deleteUser(u.id)
+                      _c("td", [_vm._v(_vm._s(u.name))]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v(_vm._s(_vm._f("toUpperCase")(u.type)))]),
+                      _vm._v(" "),
+                      _c("td", [
+                        _c(
+                          "a",
+                          {
+                            attrs: { href: "#" },
+                            on: {
+                              click: function($event) {
+                                _vm.showEditModal(u)
+                              }
                             }
-                          }
-                        },
-                        [_c("i", { staticClass: "fa fa-trash c-red" })]
-                      )
+                          },
+                          [_c("i", { staticClass: "fa fa-edit green" })]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "a",
+                          {
+                            attrs: { href: "#" },
+                            on: {
+                              click: function($event) {
+                                _vm.deleteUser(u.id)
+                              }
+                            }
+                          },
+                          [_c("i", { staticClass: "fa fa-trash red" })]
+                        )
+                      ])
                     ])
-                  ])
-                })
-              )
-            ])
-          ]),
-          _vm._v(" "),
-          _c(
-            "div",
-            { staticClass: "card-footer" },
-            [
-              _c(
-                "pagination",
-                {
-                  attrs: { data: _vm.users, "show-disabled": true },
-                  on: { "pagination-change-page": _vm.getResults }
-                },
-                [
-                  _c(
-                    "span",
-                    { attrs: { slot: "prev-nav" }, slot: "prev-nav" },
-                    [_c("i", { staticClass: "fa fa-chevron-left" })]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "span",
-                    { attrs: { slot: "next-nav" }, slot: "next-nav" },
-                    [_c("i", { staticClass: "fa fa-chevron-right" })]
-                  )
-                ]
-              )
-            ],
-            1
-          )
+                  })
+                )
+              ])
+            ]),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "card-footer" },
+              [
+                _c(
+                  "pagination",
+                  {
+                    staticClass: "pagination pagination-sm float-right",
+                    attrs: { data: _vm.users, "show-disabled": true },
+                    on: { "pagination-change-page": _vm.getResults }
+                  },
+                  [
+                    _c(
+                      "span",
+                      { attrs: { slot: "prev-nav" }, slot: "prev-nav" },
+                      [_vm._v("«")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "span",
+                      { attrs: { slot: "next-nav" }, slot: "next-nav" },
+                      [_vm._v("»")]
+                    )
+                  ]
+                )
+              ],
+              1
+            )
+          ])
         ])
       ])
     ]),
@@ -77854,7 +77865,7 @@ var render = function() {
                           }
                         }
                       },
-                      [_vm._v("Reset Form")]
+                      [_vm._v("Reset\n                            Form")]
                     ),
                     _vm._v(" "),
                     _c(
@@ -78876,7 +78887,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "container" }, [
+    return _c("div", { staticClass: "container-fluid" }, [
       _c("div", { staticClass: "row" }, [
         _c("div", { staticClass: "col-md-12" }, [
           _c("div", { staticClass: "card card-default" }, [
